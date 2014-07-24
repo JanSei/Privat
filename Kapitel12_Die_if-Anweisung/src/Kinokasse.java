@@ -22,5 +22,4 @@ public class Kinokasse {
 	    }
 	    System.out.println("Geniessen Sie die Show");    // wird immer ausgeführt
 	}
-
 }
