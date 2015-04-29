@@ -1,13 +1,27 @@
-import java.io.*;
-import java.util.*;
+package woerter;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Main {
+import util.Menu;
 
-	private static Scanner in;
+public class Application {
+
+//	private static Scanner in;
 
 	public static void main(String[] args) {
+		
+		Menu menu = new Menu("Auswahl der Aktion");
+		
+		// Speicher
+//		menu.add("Wort einfuegen", 'a', action);
+//		menu.add("Wort suchen", 's', action);
+//		menu.add("Wort loeschen", 'd', action);
+//		menu.add("Ende", 'e', action);
 
-		in = new Scanner(System.in);
+//		in = new Scanner(System.in);
 
 		// Entscheidung ob Input oder nicht
 		String entscheidung = null;
@@ -33,21 +47,21 @@ public class Main {
 		ArrayList<String> sentences = new Sentences();
 
 		System.out.println("Willst du ein Wort eingeben? (J oder N)");
-		entscheidung = in.next();
+//		entscheidung = in.next();
 		if (entscheidung.equals("J"))
 			immernoch = true;
 		else
 			immernoch = false;
 		
 		System.out.println("Geben Sie ihre Sprache an: ");
-		String sprache = in.next().toUpperCase();
+//		String sprache = in.next().toUpperCase();
 
 		while (immernoch) {
 
 			// Inputting a word into a list of words - duplicates not added to
 			// myWords
 			System.out.print("Wort: ");
-			myWord = in.next().toLowerCase();
+//			myWord = in.next().toLowerCase();
 			myWords.add(myWord);
 
 			// Adding three synonyms
@@ -70,14 +84,14 @@ public class Main {
 			myDictionary.put(myWord, myList);
 			
 			System.out.println("Willst du ein Wort eingeben? (J oder N)");
-			entscheidung = in.next();
+//			entscheidung = in.next();
 			if (entscheidung.equals("J"))
 				immernoch = true;
 			else
 				immernoch = false;
 		}
-		in.close();
-		languageSelection.put(sprache, myDictionary);
+//		in.close();
+//		languageSelection.put(sprache, myDictionary);
 		System.out.println("Schönes Leben noch!");
 		((Synonyms) synonyms).synOut();
 		((Antonyms) antonyms).antOut();
