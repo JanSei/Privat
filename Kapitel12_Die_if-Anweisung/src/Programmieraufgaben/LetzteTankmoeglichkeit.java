@@ -51,5 +51,4 @@ public class LetzteTankmoeglichkeit {
 		else
 			System.out.println("Weiterfahren...");
 	}
-
 }

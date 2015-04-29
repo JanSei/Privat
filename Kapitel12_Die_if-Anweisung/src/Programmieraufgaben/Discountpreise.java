@@ -24,5 +24,4 @@ public class Discountpreise {
 		else
 			System.out.println("Keine Discountpreise unter 10 Euro Einkauf!");
 	}
-
 }

@@ -51,5 +51,4 @@ public class Bestellungsueberpruefung {
 		int gesamtbetrag = schraubenpreis + mutterpreis + unterlegscheibenpreis;
 		System.out.println("\nGesamtbetrag: " + (gesamtbetrag));
 	}
-
 }
