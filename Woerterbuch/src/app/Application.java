@@ -1,4 +1,4 @@
-package woerter;
+package app;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 import util.Menu;
+import woerter.Antonyms;
+import woerter.Definitions;
+import woerter.Sentences;
+import woerter.Synonyms;
 
 public class Application {
 
