@@ -1,37 +1,54 @@
 package woerter;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public final class Synonyms extends ArrayList<String> {
+import util.Console;
 
-	private static Scanner in = new Scanner(System.in);
+public final class Synonyms extends ArrayList<String> implements IWord {
+	
+	
 
 	public Synonyms() {
 
 	}
 
-	public void synAdd() {
+	public List<String> add() {
 		int count = 0;
+		System.out.println();
+		List<String> synonyms = new ArrayList<String>();
 		while (count < 3) {
-			System.out.print("Synonym Nr." + (count+1) + ": ");
-			String mySynonym = in.next();
-			if (this.contains(mySynonym)) {
+			String mySynonym = Console.readLine("\tSynonym Nr." + (count+1) + ": ", true);
+			if (Console.containsWhiteSpace(mySynonym))
+				System.out.println("One word only, please!");
+			else if (synonyms.contains(mySynonym)) {
 				System.out.println("No duplicate synonyms allowed!");
 			} else {
-				super.add(mySynonym);
+				synonyms.add(mySynonym);
 				count++;
 			}
 		}
+		return synonyms;
 	}
 	
-	public void synOut() {
+	public void out(ArrayList<String> list) {
 		int count = 0;
-		for (Iterator<String> i = this.iterator(); i.hasNext(); ) {
+		System.out.println();
+		for (Iterator<String> i = list.iterator(); i.hasNext(); ) {
 			String synonym = i.next();
-			System.out.println("Synonym Nr. " + (count+1) + ": " + synonym);
+			System.out.println("\tSynonym Nr. " + (count+1) + ": " + synonym);
 			count++;
 		}
+	}
+	
+	public String search() {
+		return "";
+	}
+	
+	public String delete() {
+		return "";
 	}
 
 }

@@ -1,39 +1,47 @@
 package woerter;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Scanner;
+import java.util.List;
+
+import util.Console;
 
 
-public final class Sentences extends ArrayList<String>{
+public final class Sentences extends ArrayList<String> implements IWord {
 	
-	private static Scanner in = new Scanner(System.in);
-
 	public Sentences() {
 
 	}
 
-	public void sentAdd() {
+	public List<String> add() {
 		int count = 0;
+		List<String> sentences = new ArrayList<String>();
 		while (count < 3) {
-			System.out.print("Sentence Nr." + (count+1) + ": ");
-			String mySentence = in.nextLine();
-			if (this.contains(mySentence)) {
+			String mySentence = Console.readLine("\nSentence Nr." + (count+1) + ": ", false);
+			if (sentences.contains(mySentence)) {
 				System.out.println("No duplicate sentences allowed!");
 			} else {
-				super.add(mySentence);
+				sentences.add(mySentence);
 				count++;
 			}
 		}
+		return sentences;
 	}
 	
-	public void sentOut() {
+	public void out(ArrayList<String> list) {
 		int count = 0;
-		for (Iterator<String> i = this.iterator(); i.hasNext(); ) {
+		for (Iterator<String> i = list.iterator(); i.hasNext(); ) {
 			String sentence = i.next();
-			System.out.println("Sentence Nr. " + (count+1) + ": " + sentence);
+			System.out.println("\nSentence Nr. " + (count+1) + ": " + sentence);
 			count++;
 		}
 	}
 
+	public String search() {
+		return "";
+	}
+	
+	public String delete() {
+		return "";
+	}
 
 }

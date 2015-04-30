@@ -52,7 +52,7 @@ public final class Menu {
     public void runloop() {
         while (!allDone) {
             printList();
-            String input = Console.readLine(": ");
+            String input = Console.readLine(": ", false);
             if (input.length() != 1)
                 System.out.println("1 Buchstabe bitte!");
             else {

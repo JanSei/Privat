@@ -1,43 +1,54 @@
 package woerter;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.List;
+
+import util.Console;
 
 
-public final class Definitions extends ArrayList<String>{
+public final class Definitions extends ArrayList<String> implements IWord {
 	
-	private static Scanner in = new Scanner(System.in);
-
 	public Definitions() {
 
 	}
 
-	public void defAdd() {
+	public List<String> add() {
 		boolean eingabe = true;
 		int count = 0;
+		System.out.println();
+		List<String> definitions = new ArrayList<String>();
 		while (eingabe) {
-			System.out.print("Definition Nr." + (count+1) + ": ");
-			String myDefinition = in.nextLine();
-			if (this.contains(myDefinition)) {
+			String myDefinition = Console.readLine("\t\tDefinition Nr." + (count+1) + ": ", false);
+			if (definitions.contains(myDefinition)) {
 				System.out.println("No duplicate definitions allowed!");
 			} 
 			else if (myDefinition.equals("exit")) {
-				return;
+				break;
 			}
 			else {
-				super.add(myDefinition);
+				definitions.add(myDefinition);
 				count++;
 			}
 		}
+		return definitions;
 	}
 	
-	public void defOut() {
+	public void out(ArrayList<String> list) {
 		int count = 0;
-		for (Iterator<String> i = this.iterator(); i.hasNext(); ) {
+		System.out.println();
+		for (Iterator<String> i = list.iterator(); i.hasNext(); ) {
 			String definition = i.next();
-			System.out.println("Definition Nr. " + (count+1) + ": " + definition);
+			System.out.println("\t\tDefinition Nr. " + (count+1) + ": " + definition);
 			count++;
 		}
+	}
+	
+	public String search() {
+		return "";
+	}
+	
+	public String delete() {
+		return "";
 	}
 
 }
