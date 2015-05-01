@@ -28,9 +28,6 @@ public class Application {
 		// Woerterbuch Inhalt
 		final Map<String, ArrayList<ArrayList<String>>> myDictionary = new HashMap<String, ArrayList<ArrayList<String>>>();
 
-		// Liste gedacht fuer Synonyme, Antonyme, Definitionen, Saetze
-		final List<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
-
 		// Liste meiner gesamten Anzahl an Woertern
 		final List<String> myWords = new ArrayList<String>();
 
@@ -56,6 +53,9 @@ public class Application {
 					System.out.println("Wort existiert schon!");
 				else {
 					myWords.add(myWord);
+					
+					// Liste gedacht fuer Synonyme, Antonyme, Definitionen, Saetze
+					final List<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
 
 					// Adding three synonyms
 					List<String> myThreeSynonyms = ((Synonyms) synonyms).add();
@@ -80,7 +80,9 @@ public class Application {
 		menu.add("Wort suchen", 's', new Command() {
 			public void run() {
 				boolean found = false;
-				while (!found) {
+				int tries = 0;
+				int zwischenloesung = 0;
+				while (!found & tries < 3) {
 					String mySearchedWord = Console.readLine(
 							"\nGesuchtes Wort:", true);
 					if (myDictionary.containsKey(mySearchedWord)) {
@@ -88,19 +90,26 @@ public class Application {
 						List<ArrayList<String>> wordProperties = myDictionary.get(mySearchedWord); // TODO unnoetig?
 						for (ArrayList<String> temp : wordProperties) {
 //							if (temp instanceof Synonyms)
+							if (zwischenloesung == 0)	// Nur eine ZWISCHENLOESUNG!
 								((Synonyms) synonyms).out(temp);
 //							if (temp instanceof Antonyms)
+							if (zwischenloesung == 1)
 								((Antonyms) antonyms).out(temp);
 //							if (temp instanceof Definitions)
+							if (zwischenloesung == 2)
 								((Definitions) definitions).out(temp);
 //							if (temp instanceof Sentences)
+							if (zwischenloesung == 3)
 								((Sentences) sentences).out(temp);
+							zwischenloesung++;
 						}
-						System.out.println(myDictionary.get(mySearchedWord)); // zum
+//						System.out.println(myDictionary.get(mySearchedWord)); // zum
 																				// Testen
 						found = true;
-					} else
+					} else {
 						System.out.println("Word NOT FOUND!");
+						tries++;
+					}
 				}
 			}
 		});
